@@ -64,8 +64,13 @@ class Helper:
         return math.sqrt(squared_sum)
 
 
+
+
     @staticmethod
     def model_max_values(model, target_params):
+        """
+        获取model，和target_params的差值最大值
+        """
         squared_sum = list()
         for name, layer in model.named_parameters():
             squared_sum.append(torch.max(torch.abs(layer.data - target_params[name].data)))
@@ -74,6 +79,9 @@ class Helper:
 
     @staticmethod
     def model_max_values_var(model, target_params):
+        """
+        计算model和target_params每层的最大差值的和
+        """
         squared_sum = list()
         for name, layer in model.named_parameters():
             squared_sum.append(torch.max(torch.abs(layer - target_params[name])))
@@ -81,6 +89,9 @@ class Helper:
 
     @staticmethod
     def get_one_vec(model, variable=False):
+        """
+        不晓得
+        """
         size = 0
         for name, layer in model.named_parameters():
             if name == 'decoder.weight':
@@ -134,6 +145,9 @@ class Helper:
 
     def model_cosine_similarity(self, model, target_params_variables,
                                 model_id='attacker'):
+        """
+        余弦相似度
+        """
 
         cs_list = list()
         cs_loss = torch.nn.CosineSimilarity(dim=0)
@@ -159,6 +173,9 @@ class Helper:
         return 1e3*sum(cos_los_submit)
 
     def accum_similarity(self, last_acc, new_acc):
+        """
+        积累的余弦相似度
+        """
 
         cs_list = list()
 
@@ -187,6 +204,9 @@ class Helper:
 
     @staticmethod
     def dp_noise(param, sigma):
+        """
+        加噪声
+        """
 
         noised_layer = torch.cuda.FloatTensor(param.shape).normal_(mean=0, std=sigma)
 

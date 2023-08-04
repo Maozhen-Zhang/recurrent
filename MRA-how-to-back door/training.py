@@ -498,7 +498,6 @@ def test(helper, epoch, data_source,
     else:
         acc = 100.0 * (float(correct) / float(dataset_size))
         total_l = total_loss / dataset_size
-
         logger.info('___Test {} poisoned: {}, epoch: {}: Average loss: {:.4f}, '
                     'Accuracy: {}/{} ({:.4f}%)'.format(model.name, is_poison, epoch,
                                                        total_l, correct, dataset_size,
