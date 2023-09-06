@@ -26,7 +26,12 @@ This is the official code for our paper [On the Vulnerability of Backdoor Defens
    --backdoor {ff,dba,naive,neurotoxin}
    --model {simple,resnet18}
    ```
+   
+   ```bash
+   python Bases.py --defense mitigation-pruning --config cifar --backdoor dba --model simple
+   python Bases.py --defense fedavg --config cifar --backdoor dba --model simple
 
+   ```
    Hyperparameters about attack and defense baselines are mostly in `Params.py`, hyperparameters about dataset are mostly in `configs/`
 
 ## Citation

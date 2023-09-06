@@ -143,6 +143,9 @@ class ServerAvg(Serverbase):
             prop = client.n_sample * pt / total_prop
             self.add_weights(averaged_weights, client.local_model.state_dict(), prop)
 
+
+
+
         # for client in clients:
         #     client.local_model.to('cpu')
 

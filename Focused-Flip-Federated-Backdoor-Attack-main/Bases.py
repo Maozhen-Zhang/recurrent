@@ -346,7 +346,6 @@ class FederatedBackdoorExperiment:
                 batch = self.task.get_batch(i, data)
                 if backdoor:
                     batch = self.attacks.synthesizer.make_backdoor_batch(batch, test=True, attack=True)
-
                 outputs = target_model(batch.inputs)
                 '''To Modify'''
                 self.task.accumulate_metrics(outputs=outputs, labels=batch.labels)
